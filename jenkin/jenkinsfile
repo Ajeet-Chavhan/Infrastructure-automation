@@ -32,7 +32,7 @@ pipeline {
         stage('Approval') {
             steps {
                 script {
-                    def plan = readFile ' cd terraform/tfplan.txt'
+                    def plan = readFile 'terraform/tfplan.txt'
                     input message: "Do you want to proceed with the Terraform action?", parameters: [
                         string(defaultValue: 'plan', description: 'Please review the plan and decide to continue.', name: 'plan')
                     ]
