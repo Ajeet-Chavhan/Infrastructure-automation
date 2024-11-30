@@ -23,8 +23,9 @@ pipeline {
                     cd terraform
                     pwd
                     terraform init
-                    terraform plan -out=tfplan
-                    terraform show -no-color tfplan > tfplan.txt
+                    echo "terraform debug"
+                    terraform plan -out=tfplan   # Generate the plan
+                    terraform show -no-color tfplan  # Show the plan without color
                 '''
             }
         }
