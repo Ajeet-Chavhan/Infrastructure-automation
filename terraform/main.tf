@@ -3,7 +3,7 @@ provider "aws" {
 }
 
 resource "aws_instance" "server1" {
- 
+ subnet_id = "subnet-0df9f3daf4cc6cee6"
   ami           = "ami-0614680123427b75e"
   instance_type = "t2.micro"
   key_name               = "m"
@@ -16,7 +16,7 @@ resource "aws_instance" "server1" {
   
 }
 resource "aws_instance" "server2" {
- 
+ subnet_id = "subnet-0df9f3daf4cc6cee6"
   ami           = "ami-0614680123427b75e"
   instance_type = "t2.micro"
   key_name               = "m"
