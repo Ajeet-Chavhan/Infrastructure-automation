@@ -24,8 +24,12 @@ pipeline {
                     pwd
                     terraform init
                     echo "terraform debug"
+
                     terraform plan -out=tfplan   # Generate the plan
                     terraform show -no-color tfplan  # Show the plan without color
+
+                    terraform plan -out=tfplan
+                    terraform show -no-color tfplan>tfplan.txt
                 '''
             }
         }
@@ -34,8 +38,9 @@ pipeline {
             steps {
                 script {
                     def plan = readFile 'terraform/tfplan.txt'
-                    input message: "Do you want to proceed with the Terraform action?", parameters: [
-                        string(defaultValue: 'plan', description: 'Please review the plan and decide to continue.', name: 'plan')
+                    input message: "Do you want to proceed with the Terraform action?",
+                     parameters: [
+                        text(name: 'plan',description: 'Please review the plan and decide to continue.',defaultValue: 'plan')
                     ]
                 }
             }
