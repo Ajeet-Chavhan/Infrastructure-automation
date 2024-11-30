@@ -28,21 +28,9 @@ pipeline {
             terraform show -no-color tfplan > terraform/tfplan.txt  # Ensure the file path is correct
         '''
     }
-}
-
-            steps {
-                sh '''
-                    cd terraform
-                    pwd
-                    terraform init
-                    echo "terraform debug"
-                    terraform plan -out=tfplan
-                    terraform show -no-color tfplan > terraform/tfplan.txt
-                '''
-            }
         }
 
-
+    
 stage('Approval') {
     steps {
         script {
