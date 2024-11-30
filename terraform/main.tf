@@ -7,7 +7,7 @@ resource "aws_instance" "server1" {
   ami           = "ami-0614680123427b75e"
   instance_type = "t2.micro"
   key_name               = "m"
-  vpc_security_group_ids = ["default"]
+  vpc_security_group_ids = ["sg-0c6db17cdf18dfa5a"]
 
   user_data = file("grafan.sh")
   tags = {
@@ -20,7 +20,7 @@ resource "aws_instance" "server2" {
   ami           = "ami-0614680123427b75e"
   instance_type = "t2.micro"
   key_name               = "m"
-  vpc_security_group_ids = ["default"]
+  vpc_security_group_ids = ["sg-0c6db17cdf18dfa5a"]
 
   tags = {
     Name="node-expo"
